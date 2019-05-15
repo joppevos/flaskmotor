@@ -22,8 +22,7 @@ class User(db.Model):
 def home():
     form = LoginForm()
     if form.validate_on_submit():
-
-        motor = get_motorcycle(dick=form.dick.data, age=form.age.data, budget=form.amount.data)
+        motor = get_motorcycle(dick=int(form.dick.data), age=int(form.age.data), budget=int(form.amount.data))
         return render_template('login.html', form=form, answer=True, motor=motor)
     return render_template('login.html', form=form, answer=False)
 

@@ -6,10 +6,10 @@ from wtforms.validators import DataRequired, ValidationError, InputRequired
 def validate_digit(form, field):
     try:
         val = int(field.data)
-    except ValueError:
-        message = field.gettext("Please enter a number")
-        # field.errors.append("Please enter a number")
-        raise ValidationError("Please enter a number")
+    except (ValueError, TypeError):
+        # message = field.gettext("Please enter a number")
+        field.errors[0] = ("Please enter a number")
+        # raise ValidationError("Please enter a number")
 
 
 class LoginForm(FlaskForm):
@@ -20,4 +20,4 @@ class LoginForm(FlaskForm):
     submit = SubmitField('Calculate!')
     dick = IntegerField('dick', validators=[InputRequired()])
 
-# class DickForm(FlaskForm):
+
