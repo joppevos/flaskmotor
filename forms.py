@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, IntegerField
+from wtforms import StringField, SubmitField, IntegerField, SelectField
 from wtforms.validators import DataRequired, ValidationError, InputRequired
 
 
@@ -13,9 +13,12 @@ def validate_digit(form, field):
 
 
 class LoginForm(FlaskForm):
-    age    = IntegerField('age', validators=[InputRequired(), validate_digit])
-    amount    = IntegerField('amount', validators=[InputRequired(), validate_digit])
-    dick    = IntegerField('dick', validators=[InputRequired(), validate_digit])
-    submit = SubmitField('calculate')
+    age = IntegerField('age', validators=[InputRequired(), validate_digit])
+    amount = IntegerField('amount', validators=[InputRequired(), validate_digit])
+    typemotor = SelectField(u'Programming Language',
+                            choices=[('Tour', 'Tour'), ('Sport', 'Sport'), ('Cruiser', 'Cruiser')])
+    submit = SubmitField('Calculate!')
 
 
+class DickForm(FlaskForm):
+    dick = IntegerField('dick', validators=[InputRequired(), validate_digit])
