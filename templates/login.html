@@ -25,12 +25,11 @@
 				<div class="form-group">
 					{{ form.typemotor(class="form-control") }}
 				</div>
-				{% if dick == True %}
 				<div class="form-group">
 					<label for="BudgetInput"> Enter your dick size in centimeter</label>
-					{{ dickform.dick(class="form-control ", placeholder="Enter you dick length")}}
-				{% endif%}
+					{{ form.dick(class="form-control ", placeholder="Enter you dick length")}}
 				</div>
+
 				<div>
 					{{form.submit(class="btn btn-primary btn-lg btn-block")}}
 				</div>

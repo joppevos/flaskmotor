@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect
-from forms import LoginForm, validate_digit, DickForm
+from forms import LoginForm, validate_digit
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -21,14 +21,10 @@ class User(db.Model):
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = LoginForm()
-    dickform = DickForm()
-
     if form.validate_on_submit():
-        print('here')
-        return render_template('login.html', form=form, answer=False, dick=False, dickform=dickform)
-        # if dickform.validate_on_submit():
-        #     motor = get_motorcycle(dick=dickform.dick.data, age=form.age.data, budget=form.amount.data)
-        #     return render_template('login.html', form=form, answer=True, motor=motor)
+
+        motor = get_motorcycle(dick=form.dick.data, age=form.age.data, budget=form.amount.data)
+        return render_template('login.html', form=form, answer=True, motor=motor)
     return render_template('login.html', form=form, answer=False)
 
 

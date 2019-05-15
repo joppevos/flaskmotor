@@ -18,7 +18,6 @@ class LoginForm(FlaskForm):
     typemotor = SelectField(u'Programming Language',
                             choices=[('Tour', 'Tour'), ('Sport', 'Sport'), ('Cruiser', 'Cruiser')])
     submit = SubmitField('Calculate!')
+    dick = IntegerField('dick', validators=[InputRequired()])
 
-
-class DickForm(FlaskForm):
-    dick = IntegerField('dick', validators=[InputRequired(), validate_digit])
+# class DickForm(FlaskForm):
